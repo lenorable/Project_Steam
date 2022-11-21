@@ -6,8 +6,10 @@ dashboard voor project steam
 # mensen die iets hebben toegevoegd:
 Lenor
 
+Sunday
 
 Yana
 
+Rik
 
 Max Groenendijk
