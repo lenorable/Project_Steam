@@ -10,6 +10,6 @@ Sunday - 1805087  - Ssunnie
 
 Yana - 1832863 - yanamladenova
 
-Rik - 1833002 - Rikdijk
+Rik - 1833002 - RikDijk
 
 Max Groenendijk - 1833745 - MaxGroenendk1
