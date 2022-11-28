@@ -6,10 +6,10 @@ Steam is het online gameplatform waar je spellen kunt kopen en spelen. Het is on
 # mensen die iets hebben toegevoegd:
 Lenor - 1833746 - Lenorable
 
-Sunday
+Sunday - 1805087  - Ssunnie
 
-Yana
+Yana - 1832863 - yanamladenova
 
-Rik
+Rik - 1833002 - Rikdijk
 
-Max Groenendijk
+Max Groenendijk - 1833745 - MaxGroenendk1
