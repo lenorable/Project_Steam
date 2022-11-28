@@ -4,7 +4,7 @@ Steam is het online gameplatform waar je spellen kunt kopen en spelen. Het is on
 # how to use
 
 # mensen die iets hebben toegevoegd:
-Lenor
+Lenor - 1833746 - Lenorable
 
 Sunday
 
