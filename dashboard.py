@@ -1,16 +1,21 @@
 import requests
 import json
 
-#def get_api_by_nummer(api_item):
-#    resource_uri = "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json"
-#    response = requests.get(resource_uri)
-#    response_data = response.json()
-#
-#    #api_item = 1000 #geeft aan hoeveelste item van de opgehaalde data je wilt gebruiken
-#    app_id = response_data['applist']["apps"][api_item]["appid"]
-#    return get_api_info(app_id)
+# dit is mogelijk handig later
+"""
+def get_api_by_nummer(api_item):
+    resource_uri = "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json"
+    response = requests.get(resource_uri)
+    response_data = response.json()
 
-def get_api_info(app_id): #geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)[0]["price"])
+    #api_item = 1000 #geeft aan hoeveelste item van de opgehaalde data je wilt gebruiken
+    app_id = response_data['applist']["apps"][api_item]["appid"]
+    return get_api_info(app_id)
+"""
+
+#geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)[0]["price"])
+#de meeste items die meer dan 1 value terug geven zijn door een ";" gescheiden. alleen de genre is gescheiden door ", ".
+def get_api_info(app_id):
     resource_uri = "http://store.steampowered.com/api/appdetails?appids={}".format(app_id)
     response = requests.get(resource_uri)
     response_data = response.json()
