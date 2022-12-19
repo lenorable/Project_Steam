@@ -20,7 +20,7 @@ eel.init('GUI') #vanaf hieronder "init" (inhoud) eel, tot aan benede
 def get_data():
     return 'Python data verkregen'
 
-#geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)[0]["price"])
+#geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)["price"])
 #de meeste items die meer dan 1 value terug geven zijn door een ";" gescheiden. alleen de genre is gescheiden door ", ".
 def get_api_info(app_id):
     resource_uri = "http://store.steampowered.com/api/appdetails?appids={}".format(app_id)
@@ -78,7 +78,7 @@ def get_api_info(app_id):
         else:
             return 0 
 
-    return_lst = [{
+    return_lst = {
         "steam_appid" : base_api_data["steam_appid"],
         "name" : base_api_data["name"],
         "release_date" : base_api_data["release_date"]["date"],
@@ -96,8 +96,8 @@ def get_api_info(app_id):
         "median_playtime" : response_data2["median_forever"],
         "owners" : response_data2["owners"],
         "price" : base_api_data["price_overview"]["final_formatted"]
-    }]
+    }
 
     return return_lst
-
-eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI
+    
+eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1
