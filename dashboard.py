@@ -1,4 +1,4 @@
-import requests
+import requests # voor de API
 import eel # voor GUI
 import json
 
@@ -14,11 +14,6 @@ def get_api_by_nummer(api_item):
     return get_api_info(app_id)
 """
 eel.init('GUI') #vanaf hieronder "init" (inhoud) eel, tot aan benede
-
-
-@eel.expose #laat zien aan javascript dat de functie bestaat en aangeroepen kan worden.
-def get_data():
-    return 'Python data verkregen'
 
 #geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)["price"])
 #de meeste items die meer dan 1 value terug geven zijn door een ";" gescheiden. alleen de genre is gescheiden door ", ".
@@ -99,5 +94,10 @@ def get_api_info(app_id):
     }
 
     return return_lst
-    
+
+@eel.expose #laat zien aan javascript dat de functie bestaat en aangeroepen kan worden.
+def get_data():
+    return get_api_info(1816550)["price"]
+
+print(get_api_info(1816550)["name"])
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1
