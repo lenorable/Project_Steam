@@ -99,5 +99,4 @@ def get_api_info(app_id):
 def get_data():
     return get_api_info(1816550)["price"]
 
-print(get_api_info(1816550)["name"])
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1
