@@ -1,6 +1,7 @@
 import requests # voor de API
 import eel # voor GUI
 import json
+import complex_functions
 
 # dit is mogelijk handig later
 """
