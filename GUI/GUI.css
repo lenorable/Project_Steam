@@ -1,0 +1,170 @@
+body{
+    background-color: #00ff00;
+}
+
+.body_divs{
+    background-color: #171A21;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.menu_div {
+    background-color: #1B2838;
+    width: 45%;
+    height: 15%;
+    position: absolute;
+    top:2.5%;
+    left: 52.5%;
+    border-radius: 1.5vw;
+    z-index: 2;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.menu_div button{
+    background-color: #2A475E;
+    width: 15%;
+    height: 40%;
+    position: relative;
+    top: 30%;
+    float: left;
+    border-radius: 2vw;
+    z-index: 2;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;   
+    margin-left: 4.1%;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #c7d5e0;
+}
+
+.menu_div button:hover{
+    background-color: #375d7b;
+}
+
+.body_divs .game_display_right{
+    background-color: #1B2838;
+    width: 45%;
+    height: 95%;
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    border-radius: 1.5vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.body_divs .Log_in_center{
+    background-color: #1B2838;
+    width: 30%;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    border-radius: 1.5vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.body_divs .Log_in_center .button_box{
+    background-color: #ffffff00;
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    top: 85%;
+    left: 0%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.body_divs .Log_in_center .button_box button{
+    background-color: #2A475E;
+    width: 45%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    float: left;
+    border-radius: 2vw;
+    z-index: 2;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;   
+    margin-left: 3.3%;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #c7d5e0;
+}
+
+.body_divs .Log_in_center .button_box button:hover{
+    background-color: #375d7b;
+}
+
+.body_divs .Log_in_center input{
+    background-color: #2A475E;
+    width: 90%;
+    height: 15%;
+    position: relative;
+    top: 0%;
+    left: 5%;
+    border-radius: 1.5vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    margin-top: 5%;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #c7d5e0;
+}
+
+.body_divs .Log_in_center .form_button{
+    background-color: #ffffff00;
+    width: 100%;
+    height: 85%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}

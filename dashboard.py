@@ -2,18 +2,19 @@ import requests # voor de API
 import eel # voor GUI
 import json
 import complex_functions
+import string
+import random
+import psycopg2
 
-# dit is mogelijk handig later
-"""
+resource_uri = "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json"
+response = requests.get(resource_uri)
+response_data_save = response.json()
+
 def get_api_by_nummer(api_item):
-    resource_uri = "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json"
-    response = requests.get(resource_uri)
-    response_data = response.json()
-
     #api_item = 1000 #geeft aan hoeveelste item van de opgehaalde data je wilt gebruiken
-    app_id = response_data['applist']["apps"][api_item]["appid"]
+    app_id = response_data_save['applist']["apps"][api_item]["appid"]
     return get_api_info(app_id)
-"""
+
 eel.init('GUI') #vanaf hieronder "init" (inhoud) eel, tot aan benede
 
 #geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)["price"])
@@ -99,5 +100,51 @@ def get_api_info(app_id):
 @eel.expose #laat zien aan javascript dat de functie bestaat en aangeroepen kan worden.
 def get_data():
     return get_api_info(1816550)["price"]
+
+charlist = " " + string.punctuation + string.digits + string.ascii_letters
+chars = list(charlist)
+key = ['h', 'A', 'U', 'T', 'v', 'K', '&', '}', 'O', ',', 'x', 'b', 'a', 'l', 'I', '{', '7', '!', 'y', 'L', '1', '"', '*', 'W', '/', 'R', 'd', 'G', 'Q', 'S', '5', 'f', 'C', 't', 'N', ';', 'q', "'", '|', '@', 'M', '%', 'H', '`', '4', '0', 'n', 'Y', ':', 'c', '6', 'D', '=', '$', '#', 'e', '(', '3', 'B', 'w', '~', '-', '\\', 'u', 'V', 'o', 'P', ']', 'J', 'j', 'F', 's', 'p', 'E', 'm', '8', ')', '_', '.', '<', '^', ' ', '+', '>', 'k', '9', '[', 'Z', 'r', '?', 'z', 'g', '2', 'i', 'X']
+
+def encrypt(password):
+    crypted = ""
+    for item in password:
+        index = chars.index(item)
+        crypted += key[index]
+    return crypted
+
+
+def decrypt(password):
+    decrypted = ""
+    for item in password:
+        index = key.index(item)
+        decrypted += chars[index]
+    return decrypted
+
+def get_games():
+    return_item = {}
+    for item in range(0, 9):
+        id = get_api_by_nummer(item)
+        awns = get_api_info(id)
+        return_item[id]["name"] = awns["name"]
+    
+    return return_item
+
+@eel.expose
+def login():
+    return True
+
+@eel.expose
+def Singup(email, passw, id):
+    connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
+    conn = psycopg2.connect(connection_string)
+    cursor = conn.cursor()
+
+    query = "INSERT INTO login VALUES ('{}', '{}', {})".format(email, encrypt(passw), id)
+    print(query)
+    cursor.execute(query)
+    conn.commit()
+    conn.close
+
+    return True
 
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1

@@ -5,15 +5,44 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="GUI.css"> <!-- roept de CSS file aan-->
     <title>Scherm met data</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Sofia Sans' rel='stylesheet'> <!-- google font importeren -->
+    
+    <script type="text/javascript" src="/eel.js"> </script><!-- Roept javascript op middels eel bibliotheek, ("eel.js" zit in eel.)-->
+    <script src="GUI.js"> </script> <!-- Kan eigen script runnen middels javascript -->
 </head>
 
 <body>
+    <!-- begin code
     <h1 id="welcomeText">Succesvol de lucht in; Applicatie_Scherm_Steam_AddOn</h1>
-    <button id="OurjsBtn">Javascript data</button> <!-- Knop voor Javascript response-->
-    <button id="OurpyBtn">Python data</button> <!-- Knop voor Python response-->
+    <button id="OurjsBtn">Javascript data</button> Knop voor Javascript response
+    <button id="OurpyBtn">Python data</button> Knop voor Python response
+    -->
+    <div class="menu_div" style="display: none;" id="menu_bar">
+        <button>Home</button>
+        <button>Games</button>
+        <button>Players</button>
+        <button>Compare</button>
+        <button>Account</button>
+    </div>
+    <div class="body_divs" id="Log_in">
+        <div class="Log_in_center">
+            <input type="email" placeholder="Email" maxlength="30" id="log_in_email"></input>
+            <input type="password" placeholder="Password (max 10 char)" maxlength="10" id="log_in_pass1"></input>
+            <input type="password" placeholder="Password again" maxlength="10" id="log_in_pass2" style="display: none;"></input>
+            <input type="number" placeholder="Steam ID" id="log_in_steam_id" style="display: none;"></input>
+            <div class="button_box">
+                <button onclick="log_in()" id="log_in_button1">Login</button>
+                <button onclick="show_sing_up()" id="log_in_button2">Sing up</button>
+            </div>
+        </div>
+    </div>
+    <div class="body_divs" id="Home" style="display: none;">
+        <div class="game_display_right"></div>
+    </div>
+    <div class="body_divs" id="Games" style="display: none;"></div>
+    <div class="body_divs" id="Players" style="display: none;"></div>
+    <div class="body_divs" id="Compare" style="display: none;"></div>
+    <div class="body_divs" id="Account" style="display: none;"></div>
 </body>
-
-<script type="text/javascript" src="/eel.js"> </script><!-- Roept javascript op middels eel bibliotheek, ("eel.js" zit in eel.)-->
-<script src="GUI.js"> </script> <!-- Kan eigen script runnen middels javascript -->
-
 </html>
