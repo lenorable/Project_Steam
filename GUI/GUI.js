@@ -14,17 +14,21 @@ document.getElementById("OurpyBtn").addEventListener("click", handleClickEventPY
 
 function log_in(){
     var email = document.getElementById("log_in_email").value;
-    var pass = document.getElementById("log_in_pass1").value;
+    var passw = document.getElementById("log_in_pass1").value;
 
-    eel.login()().then((response) => {
-        if (response == true){
-            document.getElementById("Log_in").style.display = "none";
-            document.getElementById("Home").style.display = "block";
-            document.getElementById("menu_bar").style.display = "block";
-        } else {
-            window.alert("Could not log in. Check your email and password");
-        }
-    })
+    if (email != "" && passw != ""){
+            eel.login(email, passw)().then((response) => {
+                if (response == true){
+                    document.getElementById("Log_in").style.display = "none";
+                    document.getElementById("Home").style.display = "block";
+                    document.getElementById("menu_bar").style.display = "block";
+                } else {
+                    window.alert("Something went wrong.");
+                }
+            })
+    } else{
+        window.alert("Make sure you awnserd all questions"); 
+    }
 }
 
 function sing_up(){
@@ -38,6 +42,7 @@ function sing_up(){
             eel.Singup(email, passw, id)().then((response) => {
                 if (response == true){
                     console.log("oke")
+                    log_in()
                 } else {
                     window.alert("Something went wrong.");
                 }
