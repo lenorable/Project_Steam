@@ -168,3 +168,56 @@ body{
     padding: none;
     margin: 0px;
 }
+
+.game_display_right .game_box{
+    background-color: #ffffff00;
+    width: 100%;
+    height: 15%;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    margin-top: 4.16%;
+}
+
+.game_display_right .game_box img{
+    width: 25%;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.game_display_right .game_box .text_box{
+    background-color: #ffffff00;
+    width: 65%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 35%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.5vw;
+    color: #c7d5e0;
+    text-align: left;
+}

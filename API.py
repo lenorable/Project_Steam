@@ -37,7 +37,7 @@ response_data_save = json.loads(response_data_save)
 def get_api_by_nummer(api_item):
     #api_item = 1000 #geeft aan hoeveelste item van de opgehaalde data je wilt gebruiken
     app_id = response_data_save['applist']["apps"][api_item]["appid"]
-    return(app_id)
+    return(get_api_info(app_id))
 
 #geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)["price"])
 #de meeste items die meer dan 1 value terug geven zijn door een ";" gescheiden. alleen de genre is gescheiden door ", ".
@@ -45,43 +45,64 @@ def get_api_info(app_id):
     resource_uri = "http://store.steampowered.com/api/appdetails?appids={}".format(app_id)
     response = requests.get(resource_uri)
     response_data = response.json()
+    
+    if response_data[str(app_id)]["success"] == False:
+        return "error"
 
     base_api_data = response_data[str(app_id)]["data"]
     api_info = ["steam_appid", "name", "release_date", "english", "developer", "publisher", "platforms", "required_age", "categories", "genres", "steamspy_tags", "achievements", "positive_ratings", "negative_ratings", "average_playtime", "median_playtime",  "owners",  "price"]
 
 
     def English_support():
-        if "English" in base_api_data["supported_languages"]:
-            return True
+        try:
+            if "English" in base_api_data["supported_languages"]:
+                return True
+
+        except:
+            return "unknown"
         
     def developers():
         developers = ""
-        for item in base_api_data["developers"]:
-                developers = developers + item + ';'
+        try:
+            for item in base_api_data["developers"]:
+                    developers = developers + item + ';'
 
-        return developers
+            return developers
+        except:
+            return "unknown"
 
     def publishers():
         publishers = ""
-        for item in base_api_data["publishers"]:
-                publishers = publishers + item + ';'
+        try:
+            for item in base_api_data["publishers"]:
+                    publishers = publishers + item + ';'
 
-        return publishers
+            return publishers
+        except:
+            return "unknown"
 
     def platforms():
-        platforms = ""
-        for item in base_api_data["platforms"]:
-            if base_api_data["platforms"][item] == True:
-                    platforms = platforms + item + ';'
+        try:
+            platforms = ""
+            for item in base_api_data["platforms"]:
+                if base_api_data["platforms"][item] == True:
+                        platforms = platforms + item + ';'
 
-        return platforms
+            return platforms
+
+        except:
+            return "unknown"
 
     def categories():
-        categories = ""
-        for item in base_api_data["categories"]:
-            categories = categories + item["description"] + ';'
+        try:
+            categories = ""
+            for item in base_api_data["categories"]:
+                categories = categories + item["description"] + ';'
 
-        return categories
+            return categories
+        
+        except:
+            return "unknown"
 
     resource_uri = "https://steamspy.com/api.php?request=appdetails&appid={}".format(app_id)
     response = requests.get(resource_uri)
@@ -96,6 +117,15 @@ def get_api_info(app_id):
             return len(response_data3["achievementpercentages"]["achievements"])
         else:
             return 0 
+    
+    def price():
+        if base_api_data["is_free"] == True:
+            return 0
+        else:
+            try:
+                return base_api_data["price"]["final_formatted"]
+            except:
+                return "unknown"
 
     return_lst = {
         "steam_appid" : base_api_data["steam_appid"],
@@ -114,7 +144,7 @@ def get_api_info(app_id):
         "average_playtime" : response_data2["average_forever"],
         "median_playtime" : response_data2["median_forever"],
         "owners" : response_data2["owners"],
-        "price" : base_api_data["price_overview"]["final_formatted"]
+        "price" : price()
     }
 
     return return_lst

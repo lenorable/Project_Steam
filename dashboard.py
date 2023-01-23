@@ -74,4 +74,13 @@ def Singup(email, passw, id):
 
     return True
 
+@eel.expose
+def Get_games(start_num):
+    print(start_num)
+    back = {}
+    for item in range(start_num, (start_num+5)):
+        back[item] = API.get_api_by_nummer(item)
+
+    return back
+
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1
