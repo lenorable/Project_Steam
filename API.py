@@ -18,7 +18,8 @@ for item in response_data_save['applist']['apps']:
     if count != len(response_data_save['applist']['apps'])-1:
         try:
             sos = re.sub(r"[^a-zA-Z0-9 ]+", '', str(item["name"]))
-            f.write('{"appid":' + str(item["appid"]) +  ',"name":"' + sos + '"},')
+            if str(item["name"]) != "":
+                f.write('{"appid":' + str(item["appid"]) +  ',"name":"' + sos + '"},')
         except:
             pass
     else:
@@ -45,7 +46,7 @@ def get_api_info(app_id):
     resource_uri = "http://store.steampowered.com/api/appdetails?appids={}".format(app_id)
     response = requests.get(resource_uri)
     response_data = response.json()
-    
+
     if response_data[str(app_id)]["success"] == False:
         return "error"
 

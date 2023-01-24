@@ -5,6 +5,8 @@ import string
 import random
 import psycopg2
 import API
+from API import *
+import math
 
 eel.init('GUI') #vanaf hieronder "init" (inhoud) eel, tot aan benede\
 
@@ -82,5 +84,13 @@ def Get_games(start_num):
         back[item] = API.get_api_by_nummer(item)
 
     return back
+
+@eel.expose
+def get_pages_len():
+    return math.ceil(len(response_data_save['applist']["apps"]) / 5)
+
+@eel.expose
+def get_all_game_info(id):
+    return API.get_api_info(id)
 
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1

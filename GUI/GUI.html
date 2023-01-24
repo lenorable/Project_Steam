@@ -7,6 +7,7 @@
     <title>Scherm met data</title>
 
     <link href='https://fonts.googleapis.com/css?family=Sofia Sans' rel='stylesheet'> <!-- google font importeren -->
+    <script src="https://kit.fontawesome.com/76fa0e805d.js" crossorigin="anonymous"></script> <!-- voor icontjes -->
     
     <script type="text/javascript" src="/eel.js"> </script><!-- Roept javascript op middels eel bibliotheek, ("eel.js" zit in eel.)-->
     <script src="GUI.js"> </script> <!-- Kan eigen script runnen middels javascript -->
@@ -18,14 +19,14 @@
     <button id="OurjsBtn">Javascript data</button> Knop voor Javascript response
     <button id="OurpyBtn">Python data</button> Knop voor Python response
     -->
-    <div class="menu_div" style="display: none;" id="menu_bar">
-        <button>Home</button>
-        <button>Games</button>
-        <button>Players</button>
-        <button>Compare</button>
-        <button>Account</button>
+    <div class="menu_div" style="display: block;" id="menu_bar">
+        <button onclick="change_screen('Home')">Home</button>
+        <button onclick="change_screen('Games')">Games</button>
+        <button onclick="change_screen('Players')">Players</button>
+        <button onclick="change_screen('Compare')">Compare</button>
+        <button onclick="change_screen('Account')">Account</button>
     </div>
-    <div class="body_divs" id="Log_in" style="display: block;">
+    <div class="body_divs" id="Log_in" style="display: none;">
         <div class="Log_in_center">
             <input type="email" placeholder="Email" maxlength="30" id="log_in_email"></input>
             <input type="password" placeholder="Password (max 10 char)" maxlength="10" id="log_in_pass1"></input>
@@ -37,10 +38,12 @@
             </div>
         </div>
     </div>
-    <div class="body_divs" id="Home" style="display: none;">
+    <div class="body_divs" id="Home" style="display: block;">
         <div class="game_display_right" id="game_display_home"></div>
     </div>
-    <div class="body_divs" id="Games" style="display: none;"></div>
+    <div class="body_divs" id="Games" style="display: none;">
+        <div class="game_display_right" id="game_display_games"></div>
+    </div>
     <div class="body_divs" id="Players" style="display: none;"></div>
     <div class="body_divs" id="Compare" style="display: none;"></div>
     <div class="body_divs" id="Account" style="display: none;"></div>

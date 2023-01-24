@@ -221,3 +221,161 @@ body{
     color: #c7d5e0;
     text-align: left;
 }
+
+.game_display_right .pages{
+    background-color: #ffffff00;
+    width: 50%;
+    height: 5%;
+    position: absolute;
+    top: 95%;
+    left: 25%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.game_display_right .pages .left{
+    background-color: #2A475E;
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-radius: 15vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.5vw;
+    color: #c7d5e0;
+}
+
+.game_display_right .pages .left:hover{
+    background-color: #375d7b;
+}
+
+.game_display_right .pages .right{
+    background-color: #2A475E;
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 75%;
+    border-radius: 15vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.5vw;
+    color: #c7d5e0;
+}
+
+.game_display_right .pages .right:hover{
+    background-color: #375d7b;
+}
+
+.game_display_right .pages .mid{
+    background-color: #ffffff00;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 25%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #c7d5e0;
+}
+
+.game_detail_info_top{
+    background-color: #2A475E;
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.game_detail_info_top .title{
+    background-color: #ffffff00;
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 40%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.5vw;
+    color: #c7d5e0;
+    text-align: left;
+}
+
+.game_detail_info_bottom{
+    background-color: #ffffff00;
+    width: 90%;
+    height: 70%;
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.5vw;
+    color: #c7d5e0;
+    text-align: left;
+}
+
+.game_detail_info_top img{
+    background-color: #ffffff00;
+    width: 30%;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
