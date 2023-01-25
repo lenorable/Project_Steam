@@ -18,6 +18,8 @@ charlist = " " + string.punctuation + string.digits + string.ascii_letters
 chars = list(charlist)
 key = ['h', 'A', 'U', 'T', 'v', 'K', '&', '}', 'O', ',', 'x', 'b', 'a', 'l', 'I', '{', '7', '!', 'y', 'L', '1', '"', '*', 'W', '/', 'R', 'd', 'G', 'Q', 'S', '5', 'f', 'C', 't', 'N', ';', 'q', "'", '|', '@', 'M', '%', 'H', '`', '4', '0', 'n', 'Y', ':', 'c', '6', 'D', '=', '$', '#', 'e', '(', '3', 'B', 'w', '~', '-', '\\', 'u', 'V', 'o', 'P', ']', 'J', 'j', 'F', 's', 'p', 'E', 'm', '8', ')', '_', '.', '<', '^', ' ', '+', '>', 'k', '9', '[', 'Z', 'r', '?', 'z', 'g', '2', 'i', 'X']
 
+glob_id = "76561199006187634"
+
 def encrypt(password):
     crypted = ""
     for item in password:
@@ -73,6 +75,8 @@ def Singup(email, passw, id):
     cursor.execute(query)
     conn.commit()
     conn.close
+
+    glob_id = id
 
     return True
 

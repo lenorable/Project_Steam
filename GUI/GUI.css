@@ -379,3 +379,34 @@ body{
     padding: none;
     margin: 0px;
 }
+
+.gamme_detail_info_grafical{
+    background-color: #1B2838;
+    width: 45%;
+    height: 50%;
+    position: absolute;
+    top: 20%;
+    left: 52.5%;
+    border-radius: 1.5vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.gamme_detail_info_grafical .chart{
+    background-color: #ffffff00;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    float: left;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}

@@ -11,10 +11,15 @@ f.write('{"applist": {"apps":[')
 f.close()
 
 count = 0
+percent = 0
 
 f = open('testsave.json', 'a')
 for item in response_data_save['applist']['apps']:
-    print(str(100/len(response_data_save['applist']['apps'])*(count + 1)) + "%")
+
+    if round(100/len(response_data_save['applist']['apps'])*(count + 1)) != percent:
+        percent = round(100/len(response_data_save['applist']['apps'])*(count + 1))
+        print(str(percent) + "%")
+
     if count != len(response_data_save['applist']['apps'])-1:
         try:
             sos = re.sub(r"[^a-zA-Z0-9 ]+", '', str(item["name"]))

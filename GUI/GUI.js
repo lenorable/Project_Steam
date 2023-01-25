@@ -161,22 +161,25 @@ function change_screen(screen, id) {
     for (let i = 0; i < lst.length; i++) {
         if (lst[i] != screen) {
             document.getElementById(lst[i]).style.display = "none";
+            document.getElementById("button_" + lst[i]).style.backgroundColor = "#2A475E";
         } else {
             document.getElementById(lst[i]).style.display = "block";
+            document.getElementById("button_" + lst[i]).style.backgroundColor = "#375d7b";
+            document.getElementById("button_" + lst[i]).st
             window[lst[i]](id);
         }
     }
 }
 
-function page_change(which, what){
-    if (which == "home"){
-        if (what == "back"){
+function page_change(which, what) {
+    if (which == "home") {
+        if (what == "back") {
             home_get_games(home_game_page_num_now - 5);
         } else {
             home_get_games(home_game_page_num_now + 5);
         }
-    } else if (which == "game"){
-        if (what == "back"){
+    } else if (which == "game") {
+        if (what == "back") {
             games_get_games(game_game_page_num_now - 5);
         } else {
             games_get_games(game_game_page_num_now + 5)
@@ -185,15 +188,40 @@ function page_change(which, what){
 
 }
 
-function game_info(id){
+function game_info(id) {
     eel.get_all_game_info(id)().then((response) => {
-        var to_get = ["achievements","average_playtime","categories","developers","english","genre","median_playtime","negative_ratings","owners","platforms","positive_ratings","price","publisher","release_date","required_age","steam_appid"]
+        var to_get = ["achievements", "average_playtime", "categories", "developers", "english", "genre", "median_playtime", "negative_ratings", "owners", "platforms", "positive_ratings", "price", "publisher", "release_date", "required_age", "steam_appid"]
         var info = ""
 
-        for(let i = 0; i < to_get.length; i++){
+        for (let i = 0; i < to_get.length; i++) {
             info = info + "<strong>" + to_get[i] + ": </strong>" + response[to_get[i]] + "<br>";
         }
 
         document.getElementById("game_display_games").innerHTML = "<div class='game_detail_info_top'><img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + id + "/header.jpg'><button class='title'><strong>Name: </strong>" + response["name"] + "</button></div><div class='game_detail_info_bottom'>" + info + "</div>";
+
+
+        // Load google charts
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Review', 'aantal'],
+                ['Good', response["positive_ratings"]],
+                ['Bad', response["negative_ratings"]],
+            ]);
+
+            var options = {
+                'title': 'Ratings',
+                colors: ['#33cc33', '#ff0000'],
+                backgroundColor: { stroke: '#1B2838', fill: "#1B2838" },
+                legend: { textStyle: { color: '#c7d5e0' } },
+                titleTextStyle: { color: '#c7d5e0' }
+            };
+
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_ratings'));
+            chart.draw(data, options);
+        }
     })
 }
