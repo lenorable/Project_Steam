@@ -40,10 +40,61 @@ f = open("testsave.json", "r")
 response_data_save = f.read()
 response_data_save = json.loads(response_data_save)
 
+user_games = {}
+user_friends = {}
+friend_info = []
+
+def load_user_data(steam_id):
+    global user_games
+    global user_friends
+    global friend_info
+    resource_uri = "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}".format(steam_id)
+    response = requests.get(resource_uri)
+    user_friends = response.json()["friendslist"]["friends"]
+
+    resource_uri = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}&format=json".format(steam_id)
+    response = requests.get(resource_uri)
+    user_games = response.json()["response"]["games"]
+
+    friends = []
+    friend_info = []
+    for item in user_friends:
+        friends.append(item["steamid"])
+
+    for item in friends:
+        resource_uri = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=32D90521B5D10D656EF5AEBD9CCE5A16&format=json&steamids={}".format(int(item))
+        response = requests.get(resource_uri)
+        friend_info.append([item, response.json()["response"]["players"]])
+    
+def load_user_data_game(steam_id, game_id):
+    resource_uri = "http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid={}&key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}&l=en".format(game_id, steam_id)
+    response = requests.get(resource_uri)
+    achievements = response.json()["playerstats"]["achievements"]
+
+    resource_uri = "https://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid={}&format=json".format(game_id)
+    response = requests.get(resource_uri)
+    glob_achievements = response.json()["achievementpercentages"]["achievements"]
+
+    back_product = {
+        "achieve" : achievements,
+        "glob_achieve" : glob_achievements,
+    }
+
+    return back_product
+
+
+
 def get_api_by_nummer(api_item):
     #api_item = 1000 #geeft aan hoeveelste item van de opgehaalde data je wilt gebruiken
     app_id = response_data_save['applist']["apps"][api_item]["appid"]
     return(get_api_info(app_id))
+
+def get_api_info_basic(api_item):
+    return_lst = {
+    "steam_appid" : response_data_save['applist']["apps"][api_item]["appid"],
+    "name" : response_data_save['applist']["apps"][api_item]["name"],
+    }
+    return return_lst
 
 #geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)["price"])
 #de meeste items die meer dan 1 value terug geven zijn door een ";" gescheiden. alleen de genre is gescheiden door ", ".
