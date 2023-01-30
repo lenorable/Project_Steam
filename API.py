@@ -2,7 +2,12 @@ import requests # voor de API
 import json
 import re
 
-resource_uri = "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=STEAMKEY&format=json"
+user_games = {}
+user_friends = {}
+friend_info = []
+
+#get data and write to file--------------------------------------------------------------------------------------------------
+resource_uri = "http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=32D90521B5D10D656EF5AEBD9CCE5A16&format=json"
 response = requests.get(resource_uri)
 response_data_save = response.json()
 
@@ -16,20 +21,21 @@ percent = 0
 f = open('testsave.json', 'a')
 for item in response_data_save['applist']['apps']:
 
-    if round(100/len(response_data_save['applist']['apps'])*(count + 1)) != percent:
-        percent = round(100/len(response_data_save['applist']['apps'])*(count + 1))
-        print(str(percent) + "%")
+    #if round(100/len(response_data_save['applist']['apps'])*(count + 1)) != percent:
+    #    percent = round(100/len(response_data_save['applist']['apps'])*(count + 1))
+    #    print(str(percent) + "%")
 
     if count != len(response_data_save['applist']['apps'])-1:
         try:
             sos = re.sub(r"[^a-zA-Z0-9 ]+", '', str(item["name"]))
             if str(item["name"]) != "":
-                f.write('{"appid":' + str(item["appid"]) +  ',"name":"' + sos + '"},')
+                f.write('[' + str(item["appid"]) +  ', "' + sos + '"],')
         except:
+            print(str(item["appid"]))
             pass
     else:
         sos = re.sub(r"[^a-zA-Z0-9 ]+", '', str(item["name"]))
-        f.write('{"appid":' + str(item["appid"]) +  ',"name":"' + sos + '"}')
+        f.write('[' + str(item["appid"]) +  ', "' + sos + '"]')
 
     count += 1
 
@@ -40,9 +46,16 @@ f = open("testsave.json", "r")
 response_data_save = f.read()
 response_data_save = json.loads(response_data_save)
 
-user_games = {}
-user_friends = {}
-friend_info = []
+#-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+#load games and friends of the user--------------------------------------------------------------------------------------------------
 
 def load_user_data(steam_id):
     global user_games
@@ -50,7 +63,10 @@ def load_user_data(steam_id):
     global friend_info
     resource_uri = "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}".format(steam_id)
     response = requests.get(resource_uri)
-    user_friends = response.json()["friendslist"]["friends"]
+    try:
+        user_friends = response.json()["friendslist"]["friends"]
+    except:
+        pass
 
     resource_uri = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}&format=json".format(steam_id)
     response = requests.get(resource_uri)
@@ -64,7 +80,17 @@ def load_user_data(steam_id):
     for item in friends:
         resource_uri = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=32D90521B5D10D656EF5AEBD9CCE5A16&format=json&steamids={}".format(int(item))
         response = requests.get(resource_uri)
-        friend_info.append([item, response.json()["response"]["players"]])
+        try:
+            friend_info.append([item, response.json()["response"]["players"]])
+        except:
+            pass
+
+#-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
     
 def load_user_data_game(steam_id, game_id):
     resource_uri = "http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid={}&key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}&l=en".format(game_id, steam_id)
@@ -86,15 +112,20 @@ def load_user_data_game(steam_id, game_id):
 
 def get_api_by_nummer(api_item):
     #api_item = 1000 #geeft aan hoeveelste item van de opgehaalde data je wilt gebruiken
-    app_id = response_data_save['applist']["apps"][api_item]["appid"]
+    app_id = response_data_save['applist']["apps"][api_item][0]
     return(get_api_info(app_id))
 
 def get_api_info_basic(api_item):
     return_lst = {
-    "steam_appid" : response_data_save['applist']["apps"][api_item]["appid"],
-    "name" : response_data_save['applist']["apps"][api_item]["name"],
+    "steam_appid" : response_data_save['applist']["apps"][api_item][0],
+    "name" : response_data_save['applist']["apps"][api_item][1],
     }
     return return_lst
+
+
+
+
+#get game details--------------------------------------------------------------------------------------------------
 
 #geef de app id op en krijg alle data terug in een json format. gebruik: hoe duur is app 1816550 --> print(get_api_info(1816550)["price"])
 #de meeste items die meer dan 1 value terug geven zijn door een ";" gescheiden. alleen de genre is gescheiden door ", ".
@@ -205,3 +236,43 @@ def get_api_info(app_id):
     }
 
     return return_lst
+#-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+#sort ids--------------------------------------------------------------------------------------------------
+def sort_ids():
+    f = open("testsave.json", "r")
+    response_data_save = f.read()
+    response_data_save = json.loads(response_data_save)
+
+    lst = []
+    for item in response_data_save["applist"]["apps"]:
+        lst.append(item[0])
+
+    lst.sort()
+
+    f = open('sorted_ids.json', 'w')
+    f.write('{"applist": {"apps":[')
+    f.close()
+
+    count = 0
+
+    f = open('sorted_ids.json', 'a')
+    for item in lst:
+        if count != len(lst)-1:
+            f.write('"' + str(item) + '",')
+        else:
+            f.write('"' + str(item) + '"')
+
+        count += 1
+
+    f.write("]}}")
+    f.close()
+
+sort_ids()
+#-----------------------------------------------------------------------------------------------------------------------------

@@ -24,8 +24,9 @@ function log_in() {
             document.getElementById("Home").style.display = "block";
             document.getElementById("menu_bar").style.display = "block";
             change_screen("Home");
-        }})
-    
+        }
+    })
+
     if (email != "" && passw != "") {
         eel.login(email, passw)().then((response) => {
             if (response == true) {
@@ -319,9 +320,14 @@ function get_friends() {
     eel.get_friends_info()().then((response) => {
         var inhoud = "<button class='players_title'>Your friends: </button>";
 
-        for (let i = 0; i < response.length; i++) {
-            var data = response[i][1][0];
-            inhoud = inhoud + "<div class='friends_info' onclick='friend_info_load(" + response[i][0] + ")'><img src='" + data["avatarfull"] + "'></img><button class='button'><strong>Name: </strong>" + data["personaname"] + "</button></div>";
+        console.log(response);
+        if (response == "") {
+            inhoud = inhoud + "<div class='friends_info'><button class='button'>Your friends settings are private or you dont have any friends</button></div>";
+        } else {
+            for (let i = 0; i < response.length; i++) {
+                var data = response[i][1][0];
+                inhoud = inhoud + "<div class='friends_info' onclick='friend_info_load(" + response[i][0] + ")'><img src='" + data["avatarfull"] + "'></img><button class='button'><strong>Name: </strong>" + data["personaname"] + "</button></div>";
+            }
         }
 
         document.getElementById("your_friends").innerHTML = inhoud;
@@ -332,27 +338,52 @@ function friend_info_load(player_id) {
     eel.get_friends_info()().then((response) => {
         for (let i = 0; i < response.length; i++) {
             if (response[i][0] == player_id) {
-                var inhoud = "<button class='player_display_left_text' id='text_player_info'></button>";
-                var data = response[i][1][0];
-                var inhoud2 = ""
-                console.log(data);
+                eel.overwrite_status()().then((response2) => {
 
-                inhoud = inhoud + "<div class='friends_info' id='change_top'><img src='" + data["avatarfull"] + "'></img><button class='button'><strong>Name: </strong>" + data["personaname"] + "</button></div>";
+                    var inhoud = "<button class='player_display_left_text' id='text_player_info'></button>";
+                    var data = response[i][1][0];
+                    var inhoud2 = ""
+                    console.log(data);
+                    var status = data["personastate"];
+                    var write_status = "";
 
-                inhoud2 = inhoud2 + "<strong>ID: </strong>" + data["steamid"] + "<br>"
-                inhoud2 = inhoud2 + "<strong>Status: </strong>" + steam_status_rewrite(data["personastate"]) + "<br>"
-                inhoud2 = inhoud2 + "<strong>Last online: </strong>" + timeConverter(data["lastlogoff"]) + "<br>"
-                inhoud2 = inhoud2 + "<strong>Acc made on: </strong>" + timeConverter(data["timecreated"]) + "<br>"
-                inhoud2 = inhoud2 + "<strong>Country: </strong>" + data["loccountrycode"] + "<br>"
-                inhoud2 = inhoud2 + "<strong>Real Name: </strong>" + data["realname"] + "<br>"
-                inhoud2 = inhoud2 + "<strong>Site: </strong><a href='" + data["profileurl"] + "' target='_blank'>profile page</a><br>"
+                    if (response2 == false) {
+                        if (status == 0) {
+                            write_status = "Offline";
+                        } else if (status == 1) {
+                            write_status = "Online";
+                        } else if (status == 2) {
+                            write_status = "Busy";
+                        } else if (status == 3) {
+                            write_status = "Away";
+                        } else if (status == 4) {
+                            write_status = "Snooze";
+                        } else if (status == 5) {
+                            write_status = "Looking to trade";
+                        } else if (status == 6) {
+                            write_status = "Looking to play";
+                        }
+                    } else {
+                        write_status = "by desk";
+                    }
 
-                document.getElementById("friend_info").innerHTML = inhoud;
-                document.getElementById("change_top").style.top = "0%";
-                document.getElementById("change_top").style.marginTop = "0%";
-                document.getElementById("text_player_info").innerHTML = inhoud2;
+                    inhoud = inhoud + "<div class='friends_info' id='change_top'><img src='" + data["avatarfull"] + "'></img><button class='button'><strong>Name: </strong>" + data["personaname"] + "</button></div>";
 
-                get_games_of_friends(data["steamid"]);
+                    inhoud2 = inhoud2 + "<strong>ID: </strong>" + data["steamid"] + "<br>"
+                    inhoud2 = inhoud2 + "<strong>Status: </strong>" + write_status + "<br>"
+                    inhoud2 = inhoud2 + "<strong>Last online: </strong>" + timeConverter(data["lastlogoff"]) + "<br>"
+                    inhoud2 = inhoud2 + "<strong>Acc made on: </strong>" + timeConverter(data["timecreated"]) + "<br>"
+                    inhoud2 = inhoud2 + "<strong>Country: </strong>" + data["loccountrycode"] + "<br>"
+                    inhoud2 = inhoud2 + "<strong>Real Name: </strong>" + data["realname"] + "<br>"
+                    inhoud2 = inhoud2 + "<strong>Site: </strong><a href='" + data["profileurl"] + "' target='_blank'>profile page</a><br>"
+
+                    document.getElementById("friend_info").innerHTML = inhoud;
+                    document.getElementById("change_top").style.top = "0%";
+                    document.getElementById("change_top").style.marginTop = "0%";
+                    document.getElementById("text_player_info").innerHTML = inhoud2;
+
+                    get_games_of_friends(data["steamid"]);
+                })
             }
         }
     })
@@ -375,30 +406,37 @@ function timeConverter(UNIX_timestamp) {
 }
 
 function steam_status_rewrite(status) {
-    if (status == 0) {
-        return "Offline";
-    } else if (status == 1) {
-        return "Online";
-    } else if (status == 2) {
-        return "Busy";
-    } else if (status == 3) {
-        return "Away";
-    } else if (status == 4) {
-        return "Snooze";
-    } else if (status == 5) {
-        return "Looking to trade";
-    } else if (status == 6) {
-        return "Looking to play";
-    }
+    eel.overwrite_status()().then((response) => {
+        if (response == false) {
+            if (status == 0) {
+                return "Offline";
+            } else if (status == 1) {
+                return "Online";
+            } else if (status == 2) {
+                return "Busy";
+            } else if (status == 3) {
+                return "Away";
+            } else if (status == 4) {
+                return "Snooze";
+            } else if (status == 5) {
+                return "Looking to trade";
+            } else if (status == 6) {
+                return "Looking to play";
+            }
+        } else {
+            return "by desk";
+        }
+    })
 }
 
-function get_games_of_friends(steam_id){
+function get_games_of_friends(steam_id) {
     eel.get_friends_game(steam_id)().then((response) => {
         var inhoud = document.getElementById("friend_info").innerHTML;
-        
-        if (response.length > 0){
-            for (let i = 0; i < response.length; i++){
+
+        if (response.length > 0) {
+            for (let i = 0; i < response.length; i++) {
                 eel.get_simple_game_info(response[i]["appid"])().then((response2) => {
+                    console.log("games log: \n" + response[i]["appid"] + "\n response2: " + response2)
                     inhoud = inhoud + "<div class='player_display_left_games' onclick='change_screen(" + '"Games",' + response[i]["appid"] + ");'><img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + response[i]["appid"] + "/header.jpg'><button class='button'><strong>Name: </strong>" + response2 + "</button></div>";
                     document.getElementById("friend_info").innerHTML = inhoud;
                 })

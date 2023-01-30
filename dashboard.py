@@ -99,7 +99,6 @@ def Singup(email, passw, id):
 
 @eel.expose
 def Get_games(start_num):
-    print(start_num)
     back = {}
     for item in range(start_num, (start_num+5)):
         back[item] = API.get_api_info_basic(item)
@@ -167,13 +166,40 @@ def get_friends_info():
 def get_friends_game(steam_id):
     resource_uri = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}&format=json".format(steam_id)
     response = requests.get(resource_uri)
-    return response.json()["response"]["games"]
+    try:
+        return response.json()["response"]["games"]
+    except:
+        return ""
 
 @eel.expose
 def get_simple_game_info(steam_id):
-    print(steam_id)
-    for appitem in  API.response_data_save['applist']["apps"]:
-        if appitem["appid"] == steam_id:
-            return appitem["name"]
+    for appitem in API.response_data_save['applist']["apps"]:
+        if appitem[0] == steam_id:
+            return appitem[1]
+
+@eel.expose
+def search_name(name):
+    for appitem in API.response_data_save['applist']["apps"]:
+        if appitem[1] == name:
+            return appitem[0]
+
+@eel.expose
+def overwrite_status():
+    global glob_id
+    connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
+    conn = psycopg2.connect(connection_string)
+    cursor = conn.cursor()
+
+    query = "SELECT status from login WHERE id = {};".format(glob_id)
+
+    cursor.execute(query)
+    saves = cursor.fetchall()
+    conn.close()
+
+    if saves[0][0] == "desk":
+        return True
+    else:
+        return False
+
 
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1
