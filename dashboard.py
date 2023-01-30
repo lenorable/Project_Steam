@@ -47,42 +47,37 @@ def get_games():
 @eel.expose
 def login(email, passw):
 
-    #connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
-    #conn = psycopg2.connect(connection_string)
-    #cursor = conn.cursor()
+    connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
+    conn = psycopg2.connect(connection_string)
+    cursor = conn.cursor()
 
-    #query = "SELECT password FROM login WHERE email = '{}';".format(email)
+    query = "SELECT password FROM login WHERE email = '{}';".format(email)
 
-    #cursor.execute(query)
-    #saves = cursor.fetchall()
-    #conn.close()
-    
-    global glob_id
-    glob_id = input()
-    load_user_data(glob_id)
-    return True
+    cursor.execute(query)
+    saves = cursor.fetchall()
+    conn.close()
 
-    #try:
-        #if saves[0][0] == encrypt(passw):
-        #    connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
-        #    conn = psycopg2.connect(connection_string)
-        #    cursor = conn.cursor()
+    try:
+        if saves[0][0] == encrypt(passw):
+            connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
+            conn = psycopg2.connect(connection_string)
+            cursor = conn.cursor()
 
-        #    query = "SELECT id FROM login WHERE email = '{}';".format(email)
+            query = "SELECT id FROM login WHERE email = '{}';".format(email)
 
-        #    cursor.execute(query)
-        #    saves = cursor.fetchall()
-        #    conn.close()
+            cursor.execute(query)
+            saves = cursor.fetchall()
+            conn.close()
 
-        #    global glob_id
-        #    glob_id = saves[0][0]
-        #    load_user_data(glob_id)
-            
-        #    return True
-        #else:
-        #    return False
-    #except:
-        #return False
+            global glob_id
+            glob_id = saves[0][0]
+            load_user_data(glob_id)
+           
+            return True
+        else:
+            return False
+    except:
+        return False
 
 @eel.expose
 def Singup(email, passw, id):
@@ -177,6 +172,8 @@ def get_friends_game(steam_id):
 @eel.expose
 def get_simple_game_info(steam_id):
     print(steam_id)
-    return API.response_data_save['applist']["apps"][api_item]["name"]
+    for appitem in  API.response_data_save['applist']["apps"]:
+        if appitem["appid"] == steam_id:
+            return appitem["name"]
 
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1

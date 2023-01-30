@@ -3,7 +3,7 @@ body{
 }
 
 .body_divs{
-    background-color: #e8e5de;
+    background-color: #171a21;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -19,7 +19,7 @@ body{
 }
 
 .menu_div {
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 45%;
     height: 15%;
     position: absolute;
@@ -35,7 +35,7 @@ body{
 }
 
 .menu_div button{
-    background-color: #d5b8a1;
+    background-color: #2a475e;
     width: 15%;
     height: 40%;
     position: relative;
@@ -52,15 +52,15 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.2vw;
-    color: #382a1f;
+    color: #c7d5e0;
 }
 
 .menu_div button:hover{
-    background-color: #c8a284;
+    background-color: #375d7b;
 }
 
 .body_divs .game_display_right{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 45%;
     height: 95%;
     position: absolute;
@@ -76,7 +76,7 @@ body{
 }
 
 .body_divs .Log_in_center{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 30%;
     height: 80%;
     position: absolute;
@@ -108,7 +108,7 @@ body{
 }
 
 .body_divs .Log_in_center .button_box button{
-    background-color: #d5b8a1;
+    background-color: #2a475e;
     width: 45%;
     height: 80%;
     position: relative;
@@ -125,15 +125,15 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.2vw;
-    color: #382a1f;
+    color: #c7d5e0;
 }
 
 .body_divs .Log_in_center .button_box button:hover{
-    background-color: #c8a284;
+    background-color: #375d7b;
 }
 
 .body_divs .Log_in_center input{
-    background-color: #d5b8a1;
+    background-color: #2a475e;
     width: 90%;
     height: 15%;
     position: relative;
@@ -150,7 +150,7 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.2vw;
-    color: #382a1f;
+    color: #c7d5e0;
 }
 
 .body_divs .Log_in_center .form_button{
@@ -218,7 +218,7 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.5vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }
 
@@ -239,7 +239,7 @@ body{
 }
 
 .game_display_right .pages .left{
-    background-color: #d5b8a1;
+    background-color: #2a475e;
     width: 25%;
     height: 100%;
     position: absolute;
@@ -255,15 +255,15 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.5vw;
-    color: #382a1f;
+    color: #c7d5e0;
 }
 
 .game_display_right .pages .left:hover{
-    background-color: #c8a284;
+    background-color: #375d7b;
 }
 
 .game_display_right .pages .right{
-    background-color: #d5b8a1;
+    background-color: #2a475e;
     width: 25%;
     height: 100%;
     position: absolute;
@@ -279,11 +279,11 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.5vw;
-    color: #382a1f;
+    color: #c7d5e0;
 }
 
 .game_display_right .pages .right:hover{
-    background-color: #c8a284;
+    background-color: #375d7b;
 }
 
 .game_display_right .pages .mid{
@@ -303,11 +303,11 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.2vw;
-    color: #382a1f;
+    color: #c7d5e0;
 }
 
 .game_detail_info_top{
-    background-color: #d5b8a1;
+    background-color: #2a475e;
     width: 100%;
     height: 20%;
     position: absolute;
@@ -339,14 +339,14 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.5vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }
 
 .game_detail_info_bottom{
     background-color: #ffffff00;
     width: 90%;
-    height: 70%;
+    height: 75%;
     position: absolute;
     top: 25%;
     left: 5%;
@@ -359,8 +359,8 @@ body{
     margin: 0px;
     font-family: "Sofia Sans";
     font-weight: 500;
-    font-size: 1.5vw;
-    color: #382a1f;
+    font-size: 1.3vw;
+    color: #c7d5e0;
     text-align: left;
 }
 
@@ -381,7 +381,7 @@ body{
 }
 
 .gamme_detail_info_grafical{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 45%;
     height: 50%;
     position: absolute;
@@ -412,7 +412,7 @@ body{
 }
 
 .personal_game_info{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 45%;
     height: 25%;
     position: absolute;
@@ -427,7 +427,7 @@ body{
     margin: 0px;
     font-weight: 500;
     font-size: 1.2vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: center;
 }
 
@@ -448,7 +448,7 @@ body{
     margin: 0px;
     font-weight: 500;
     font-size: 2vw;
-    color: #382a1f;
+    color: #c7d5e0;
 }
 
 .personal_game_info .information_true{
@@ -469,12 +469,12 @@ body{
     margin-bottom: 4%;
     font-weight: 500;
     font-size: 1.2vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }
 
 .compare_div_left{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 45%;
     height: 77.5%;
     position: absolute;
@@ -491,7 +491,7 @@ body{
 }
 
 .compare_div_right{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 45%;
     height: 77.5%;
     position: absolute;
@@ -524,12 +524,12 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.5vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }
 
 .account_main_div{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 95%;
     height: 77.5%;
     position: absolute;
@@ -545,7 +545,7 @@ body{
 }
 
 .account_title{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 35%;
     height: 15%;
     position: absolute;
@@ -562,12 +562,12 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 1.5vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }
 
 .players_title{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 90%;
     height: 15%;
     position: absolute;
@@ -584,11 +584,11 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 2vw;
-    color: #382a1f;
+    color: #c7d5e0;
 }
 
 .friends_info{
-    background-color: #d5b8a1;
+    background-color: #2a475e;
     width: 100%;
     height: 20%;
     position: relative;
@@ -637,12 +637,12 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 2vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }
 
 .player_display_right{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 45%;
     height: 95%;
     position: absolute;
@@ -658,7 +658,7 @@ body{
 }
 
 .player_display_left{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 45%;
     height: 77.5%;
     position: absolute;
@@ -690,12 +690,12 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 2vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }
 
 .player_display_left_games{
-    background-color: #e4d7c7;
+    background-color: #1b2838;
     width: 100%;
     height: 20%;
     position: relative;
@@ -711,7 +711,7 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 2vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }
 
@@ -747,6 +747,6 @@ body{
     font-family: "Sofia Sans";
     font-weight: 500;
     font-size: 2vw;
-    color: #382a1f;
+    color: #c7d5e0;
     text-align: left;
 }

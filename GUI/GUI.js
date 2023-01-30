@@ -399,11 +399,10 @@ function get_games_of_friends(steam_id){
         if (response.length > 0){
             for (let i = 0; i < response.length; i++){
                 eel.get_simple_game_info(response[i]["appid"])().then((response2) => {
-                    inhoud = inhoud + "<div class='player_display_left_games' onclick='change_screen(" + '"Games",' + response[i]["appid"] + ");'><img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + response[i]["appid"] + "/header.jpg'><button class='button'><strong>Name: </strong>" + response2["name"] + "</button></div>";
+                    inhoud = inhoud + "<div class='player_display_left_games' onclick='change_screen(" + '"Games",' + response[i]["appid"] + ");'><img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + response[i]["appid"] + "/header.jpg'><button class='button'><strong>Name: </strong>" + response2 + "</button></div>";
+                    document.getElementById("friend_info").innerHTML = inhoud;
                 })
             }
-
-            document.getElementById("friend_info").innerHTML = inhoud;
         }
 
     })
