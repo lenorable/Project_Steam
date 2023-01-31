@@ -1,3 +1,4 @@
+const { copyFileSync } = require("original-fs");
 const { rmSync } = require("original-fs");
 
 function handleClickEventJS() {
@@ -17,15 +18,6 @@ document.getElementById("OurpyBtn").addEventListener("click", handleClickEventPY
 function log_in() {
     var email = document.getElementById("log_in_email").value;
     var passw = document.getElementById("log_in_pass1").value;
-
-    eel.login(email, passw)().then((response) => {
-        if (response == true) {
-            document.getElementById("Log_in").style.display = "none";
-            document.getElementById("Home").style.display = "block";
-            document.getElementById("menu_bar").style.display = "block";
-            change_screen("Home");
-        }
-    })
 
     if (email != "" && passw != "") {
         eel.login(email, passw)().then((response) => {
@@ -139,12 +131,12 @@ function games_get_games(start_num) {
 
 //to start all functions for _____ screen
 function Home() {
-    home_get_games(10);
+    home_get_games(-5);
 }
 
 function Games(game) {
     if (game == null) {
-        games_get_games(10);
+        games_get_games(-5);
         document.getElementById('piechart_ratings').innerHTML = "";
         document.getElementById('personal_game_info').innerHTML = "";
     } else {
@@ -163,6 +155,7 @@ function Compare() {
 }
 
 function Account() {
+    get_own_games();
     eel.askid()().then((response) => {
         document.getElementById("account_id_copy").innerHTML = "<strong>id: </strong>" + response;
     })
@@ -443,5 +436,26 @@ function get_games_of_friends(steam_id) {
             }
         }
 
+    })
+}
+
+function give_feedback(){
+    var feedback = document.getElementById("feedback").value
+
+    eel.feedback(feedback)().then((response) => {
+        document.getElementById("feedback").value = ""
+    })
+}
+
+function get_own_games(){
+    var inhoud = "<button class='button'>My games: </button>";
+
+    eel.get_own_games()().then((response) => {
+        for (let i = 0; i < response.length; i++){
+            eel.get_simple_game_info(response[i]["appid"])().then((response2) => {
+                inhoud = inhoud + "<div class='games' onclick='change_screen(" + '"Games",' + response[i]["appid"] + ");'><img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + response[i]["appid"] + "/header.jpg'><button class='button'><strong>Name: </strong>" + response2 + " </button></div>";
+                document.getElementById("my_games").innerHTML = inhoud;
+            })
+        }
     })
 }
