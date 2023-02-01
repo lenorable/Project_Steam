@@ -7,6 +7,7 @@ import psycopg2
 import API
 from API import *
 import math
+import re
 
 eel.init('GUI') #vanaf hieronder "init" (inhoud) eel, tot aan benede\
 
@@ -201,5 +202,39 @@ def overwrite_status():
     else:
         return False
 
+@eel.expose
+def feedback(feedback):
+    global glob_id
+    connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
+    conn = psycopg2.connect(connection_string)
+    cursor = conn.cursor()
+
+    query = "SELECT email from login WHERE id = {};".format(glob_id)
+
+    cursor.execute(query)
+    saves = cursor.fetchall()
+    conn.close()
+
+    connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
+    conn = psycopg2.connect(connection_string)
+    cursor = conn.cursor()
+
+    query = "INSERT INTO feedback VALUES ('{}', {}, '{}')".format(feedback, glob_id, saves[0][0])
+    print(query)
+    cursor.execute(query)
+    conn.commit()
+    conn.close
+
+    return 'verstuurd, u krijgt binnenkort antwoord in uw mail.'
+
+@eel.expose
+def get_own_games():
+    global glob_id
+    resource_uri = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}&format=json".format(glob_id)
+    response = requests.get(resource_uri)
+    try:
+        return response.json()["response"]["games"]
+    except:
+        return ""
 
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1

@@ -55,6 +55,75 @@ response_data_save = json.loads(response_data_save)
 
 
 
+#sort ids--------------------------------------------------------------------------------------------------
+def sort_ids():
+    f = open("testsave.json", "r")
+    response_data_save = f.read()
+    response_data_save = json.loads(response_data_save)
+
+    lst = []
+    for item in response_data_save["applist"]["apps"]:
+        lst.append(item[0])
+
+    def mergeSort(lst):
+        if len(lst) > 1:
+            mid = len(lst)//2
+            L = lst[:mid]
+            R = lst[mid:]
+            mergeSort(L)
+            mergeSort(R)
+
+            i = j = k = 0
+
+            while i < len(L) and j < len(R):
+                if L[i] <= R[j]:
+                    lst[k] = L[i]
+                    i += 1
+                else:
+                    lst[k] = R[j]
+                    j += 1
+                k += 1
+
+            while i < len(L):
+                lst[k] = L[i]
+                i += 1
+                k += 1
+
+            while j < len(R):
+                lst[k] = R[j]
+                j += 1
+                k += 1
+
+    mergeSort(lst)
+
+    f = open('sorted_ids.json', 'w')
+    f.write('{"applist": {"apps":[')
+    f.close()
+
+    count = 0
+
+    f = open('sorted_ids.json', 'a')
+    for item in lst:
+        if count != len(lst)-1:
+            f.write('"' + str(item) + '",')
+        else:
+            f.write('"' + str(item) + '"')
+
+        count += 1
+
+    f.write("]}}")
+    f.close()
+
+sort_ids()
+#-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 #load games and friends of the user--------------------------------------------------------------------------------------------------
 
 def load_user_data(steam_id):
@@ -115,15 +184,31 @@ def get_api_by_nummer(api_item):
     app_id = response_data_save['applist']["apps"][api_item][0]
     return(get_api_info(app_id))
 
+#def get_api_info_basic(api_item):
+#    return_lst = {
+#    "steam_appid" : response_data_save['applist']["apps"][api_item][0],
+#    "name" : response_data_save['applist']["apps"][api_item][1],
+#    }
+#    return return_lst
+
 def get_api_info_basic(api_item):
-    return_lst = {
-    "steam_appid" : response_data_save['applist']["apps"][api_item][0],
-    "name" : response_data_save['applist']["apps"][api_item][1],
-    }
+    f = open("sorted_ids.json", "r")
+    response_data_ = f.read()
+    response_data_ = json.loads(response_data_)
+
+    use_id = response_data_['applist']["apps"][api_item]
+
+    for item in response_data_save['applist']["apps"]:
+        if item[0] == int(use_id):
+            return_lst = {
+            "steam_appid" : item[0],
+            "name" : item[1],
+            }
+    
     return return_lst
 
 
-
+print(get_api_info_basic(10))
 
 #get game details--------------------------------------------------------------------------------------------------
 
@@ -236,43 +321,4 @@ def get_api_info(app_id):
     }
 
     return return_lst
-#-----------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-#sort ids--------------------------------------------------------------------------------------------------
-def sort_ids():
-    f = open("testsave.json", "r")
-    response_data_save = f.read()
-    response_data_save = json.loads(response_data_save)
-
-    lst = []
-    for item in response_data_save["applist"]["apps"]:
-        lst.append(item[0])
-
-    lst.sort()
-
-    f = open('sorted_ids.json', 'w')
-    f.write('{"applist": {"apps":[')
-    f.close()
-
-    count = 0
-
-    f = open('sorted_ids.json', 'a')
-    for item in lst:
-        if count != len(lst)-1:
-            f.write('"' + str(item) + '",')
-        else:
-            f.write('"' + str(item) + '"')
-
-        count += 1
-
-    f.write("]}}")
-    f.close()
-
-sort_ids()
 #-----------------------------------------------------------------------------------------------------------------------------

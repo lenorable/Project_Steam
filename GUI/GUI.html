@@ -72,7 +72,16 @@
 
     <div class="body_divs" id="Account" style="display: none;">
         <button class="account_title" id="account_id_copy" onclick="copy_id()"></button>
-        <div class="account_main_div"></div>
+        <button class="color_button" onclick="color_change()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        <div class="account_main_div">
+            <div class="form">
+                <button class="label" for="feedback">Feedback:</button>
+                <textarea class="textarea" maxlength="250" placeholder="Max. 250 characters" id="feedback" name="feedback"></textarea>
+                <button onclick="give_feedback()" class="submit">Submit</button>
+            </div>
+            <div class="mygames" id="my_games">
+            </div>
+        </div>
     </div>
 </body>
 </html>

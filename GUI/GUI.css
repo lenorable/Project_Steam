@@ -750,3 +750,198 @@ body{
     color: #c7d5e0;
     text-align: left;
 }
+
+.mygames{
+    background-color: #ffffff00;
+    height: 90%;
+    width: 45%;
+    position: absolute;
+    top: 5%;
+    left: 2.5%;
+    border-radius: none;
+    z-index: 1;
+    overflow: auto;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.mygames .button{
+    background-color: #ffffff00;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+}
+
+.mygames .games{
+    background-color: #ffffff00;
+    height: 20%;
+    width: 100%;
+    position: relative;
+    top: 5%;
+    left: 0%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    margin-top: 5%;
+}
+
+.mygames .games img{
+    width: 25%;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.mygames .games .button{
+    background-color: #ffffff00;
+    height: 100%;
+    width: 65%;
+    position: absolute;
+    top: 0%;
+    left: 35%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+    text-align: left;
+}
+
+.color_button{
+    background-color: #1b2838;
+    height: 15%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    top: 2.5%;
+    left: 40%;
+    border-radius: 2vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+}
+
+.color_button:hover {
+    background-color: #2a475e;
+}
+
+.form{
+    background-color: #2a475e;
+    height: 90%;
+    width: 45%;
+    position: absolute;
+    top: 5%;
+    left: 52.5%;
+    border-radius: 2vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.textarea {
+    resize:none;
+    background-color: #ffffff00;
+    height: 75%;
+    width: 100%;
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+    text-align: center;
+}
+
+.textarea::placeholder{
+    color: #1b2838;
+}
+
+.label {
+    background-color: #ffffff00;
+    height: 10%;
+    width: 90%;
+    position: absolute;
+    top: 0%;
+    left: 5%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+    text-align: center;
+}
+
+.submit {
+    background-color: #375d7b;
+    position:absolute;
+    height: 10%;
+    width: 50%;
+    top: 85%;
+    left: 25%;
+    z-index: 1;
+    border-radius: 2vw;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+    text-align: center;
+}
