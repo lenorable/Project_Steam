@@ -3,6 +3,9 @@ from machine import Pin
 import time
 import machine
 import neopixel
+import psycopg2
+
+glob_id = input("your id: ")
 
 trigger_pin = Pin(14, Pin.OUT)
 echo_pin = Pin(15, Pin.IN)
@@ -40,11 +43,34 @@ def led_status(distance):
         np[6] = [0, 0, 0]
         np.write()
         time.sleep_ms(1)
+
+        connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
+        conn = psycopg2.connect(connection_string)
+        cursor = conn.cursor()
+
+        query = "update login set status = 'desk' where id = {}".format(glob_id)
+
+        print(query)
+        cursor.execute(query)
+        conn.commit()
+        conn.close
+
     if distance >= 50:
         np[7] = [0, 0, 0]
         np[6] = [255, 0, 0]
         np.write()
         time.sleep_ms(1)
+
+        connection_string = "host='localhost' dbname='Login' user='postgres' password='k6LfYEIszD1cOP29qTvx'"
+        conn = psycopg2.connect(connection_string)
+        cursor = conn.cursor()
+
+        query = "update login set status = NULL where id = {}".format(glob_id)
+        
+        print(query)
+        cursor.execute(query)
+        conn.commit()
+        conn.close
 
 
 while True:
