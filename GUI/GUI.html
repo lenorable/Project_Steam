@@ -12,6 +12,8 @@
     
     <script type="text/javascript" src="/eel.js"> </script><!-- Roept javascript op middels eel bibliotheek, ("eel.js" zit in eel.)-->
     <script src="GUI.js"> </script> <!-- Kan eigen script runnen middels javascript -->
+
+    <link rel="shortcut icon" type="image/x-icon" href="/Icons/logo.ico">
 </head>
 
 <body>
@@ -35,12 +37,13 @@
             <input type="number" placeholder="Steam ID" id="log_in_steam_id" style="display: none;"></input>
             <div class="button_box">
                 <button onclick="log_in()" id="log_in_button1">Login</button>
-                <button onclick="show_sing_up()" id="log_in_button2">Sing up</button>
+                <button onclick="show_sing_up()" id="log_in_button2">Sign up</button>
             </div>
         </div>
     </div>
     <div class="body_divs" id="Home" style="display: none;">
         <div class="game_display_right" id="game_display_home"></div>
+        <div class="logo_box"><img src="/Icons/icon_and_text.png"></div>
     </div>
 
     <div class="body_divs" id="Games" style="display: none;">
@@ -60,6 +63,13 @@
     </div>
 
     <div class="body_divs" id="Compare" style="display: none;">
+        <div class="hover_search" id="search_fill">
+        </div>
+        <div class="double_search">
+            <input class="double_search_input_left" type="search" placeholder="Game 1" id="compare_search_1" oninput="search(1)"></input>
+            <input class="double_search_input_right" type="search" placeholder="Game 2" id="compare_search_2" oninput="search(2)"></input>
+            <button class="double_search_input_right_right" onclick="submit_compare()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
         <div class="compare_div_left">
             <div class="game_detail_info_top" id="compare_title_box_left"></div>
             <div class="game_detail_info_bottom" id="compare_div_left"></div>

@@ -237,4 +237,17 @@ def get_own_games():
     except:
         return ""
 
+@eel.expose
+def searchgames(name):
+    gamelist = API.response_data_save["applist"]["apps"]
+
+    found = []
+    for game in gamelist:
+        if name in str(game[1]).lower():
+            found.append([game[1], game[0]])
+            if len(found) == 20:
+                break
+
+    return found
+
 eel.start('GUI.html') # alles wat binnen "eel.init" & eel.start valt is inhoud GUI1

@@ -139,7 +139,10 @@ def load_user_data(steam_id):
 
     resource_uri = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=32D90521B5D10D656EF5AEBD9CCE5A16&steamid={}&format=json".format(steam_id)
     response = requests.get(resource_uri)
-    user_games = response.json()["response"]["games"]
+    try:
+        user_games = response.json()["response"]["games"]
+    except:
+        pass
 
     friends = []
     friend_info = []

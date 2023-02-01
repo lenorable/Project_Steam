@@ -1,8 +1,8 @@
-body{
+body {
     background-color: #00ff00;
 }
 
-.body_divs{
+.body_divs {
     background-color: #171a21;
     width: 100%;
     height: 100%;
@@ -23,7 +23,7 @@ body{
     width: 45%;
     height: 15%;
     position: absolute;
-    top:2.5%;
+    top: 2.5%;
     left: 52.5%;
     border-radius: 1.5vw;
     z-index: 2;
@@ -34,7 +34,7 @@ body{
     margin: 0px;
 }
 
-.menu_div button{
+.menu_div button {
     background-color: #2a475e;
     width: 15%;
     height: 40%;
@@ -47,7 +47,7 @@ body{
     border: none;
     outline: none;
     padding: none;
-    margin: 0px;   
+    margin: 0px;
     margin-left: 4.1%;
     font-family: "Sofia Sans";
     font-weight: 500;
@@ -55,11 +55,11 @@ body{
     color: #c7d5e0;
 }
 
-.menu_div button:hover{
+.menu_div button:hover {
     background-color: #375d7b;
 }
 
-.body_divs .game_display_right{
+.body_divs .game_display_right {
     background-color: #1b2838;
     width: 45%;
     height: 95%;
@@ -75,7 +75,7 @@ body{
     margin: 0px;
 }
 
-.body_divs .Log_in_center{
+.body_divs .Log_in_center {
     background-color: #1b2838;
     width: 30%;
     height: 80%;
@@ -91,7 +91,7 @@ body{
     margin: 0px;
 }
 
-.body_divs .Log_in_center .button_box{
+.body_divs .Log_in_center .button_box {
     background-color: #ffffff00;
     width: 100%;
     height: 15%;
@@ -107,7 +107,7 @@ body{
     margin: 0px;
 }
 
-.body_divs .Log_in_center .button_box button{
+.body_divs .Log_in_center .button_box button {
     background-color: #2a475e;
     width: 45%;
     height: 80%;
@@ -120,7 +120,7 @@ body{
     border: none;
     outline: none;
     padding: none;
-    margin: 0px;   
+    margin: 0px;
     margin-left: 3.3%;
     font-family: "Sofia Sans";
     font-weight: 500;
@@ -128,11 +128,11 @@ body{
     color: #c7d5e0;
 }
 
-.body_divs .Log_in_center .button_box button:hover{
+.body_divs .Log_in_center .button_box button:hover {
     background-color: #375d7b;
 }
 
-.body_divs .Log_in_center input{
+.body_divs .Log_in_center input {
     background-color: #2a475e;
     width: 90%;
     height: 15%;
@@ -153,7 +153,7 @@ body{
     color: #c7d5e0;
 }
 
-.body_divs .Log_in_center .form_button{
+.body_divs .Log_in_center .form_button {
     background-color: #ffffff00;
     width: 100%;
     height: 85%;
@@ -169,7 +169,7 @@ body{
     margin: 0px;
 }
 
-.game_display_right .game_box{
+.game_display_right .game_box {
     background-color: #ffffff00;
     width: 100%;
     height: 15%;
@@ -186,7 +186,7 @@ body{
     margin-top: 4.16%;
 }
 
-.game_display_right .game_box img{
+.game_display_right .game_box img {
     width: 25%;
     height: 80%;
     position: absolute;
@@ -201,7 +201,7 @@ body{
     margin: 0px;
 }
 
-.game_display_right .game_box .text_box{
+.game_display_right .game_box .text_box {
     background-color: #ffffff00;
     width: 65%;
     height: 100%;
@@ -222,7 +222,7 @@ body{
     text-align: left;
 }
 
-.game_display_right .pages{
+.game_display_right .pages {
     background-color: #ffffff00;
     width: 50%;
     height: 5%;
@@ -238,7 +238,7 @@ body{
     margin: 0px;
 }
 
-.game_display_right .pages .left{
+.game_display_right .pages .left {
     background-color: #2a475e;
     width: 25%;
     height: 100%;
@@ -258,11 +258,11 @@ body{
     color: #c7d5e0;
 }
 
-.game_display_right .pages .left:hover{
+.game_display_right .pages .left:hover {
     background-color: #375d7b;
 }
 
-.game_display_right .pages .right{
+.game_display_right .pages .right {
     background-color: #2a475e;
     width: 25%;
     height: 100%;
@@ -282,11 +282,11 @@ body{
     color: #c7d5e0;
 }
 
-.game_display_right .pages .right:hover{
+.game_display_right .pages .right:hover {
     background-color: #375d7b;
 }
 
-.game_display_right .pages .mid{
+.game_display_right .pages .mid {
     background-color: #ffffff00;
     width: 50%;
     height: 100%;
@@ -306,7 +306,7 @@ body{
     color: #c7d5e0;
 }
 
-.game_detail_info_top{
+.game_detail_info_top {
     background-color: #2a475e;
     width: 100%;
     height: 20%;
@@ -322,7 +322,7 @@ body{
     margin: 0px;
 }
 
-.game_detail_info_top .title{
+.game_detail_info_top .title {
     background-color: #ffffff00;
     width: 60%;
     height: 100%;
@@ -343,7 +343,7 @@ body{
     text-align: left;
 }
 
-.game_detail_info_bottom{
+.game_detail_info_bottom {
     background-color: #ffffff00;
     width: 90%;
     height: 75%;
@@ -364,7 +364,7 @@ body{
     text-align: left;
 }
 
-.game_detail_info_top img{
+.game_detail_info_top img {
     background-color: #ffffff00;
     width: 30%;
     height: 80%;
@@ -380,7 +380,7 @@ body{
     margin: 0px;
 }
 
-.gamme_detail_info_grafical{
+.gamme_detail_info_grafical {
     background-color: #1b2838;
     width: 45%;
     height: 50%;
@@ -396,7 +396,7 @@ body{
     margin: 0px;
 }
 
-.gamme_detail_info_grafical .chart{
+.gamme_detail_info_grafical .chart {
     background-color: #ffffff00;
     width: 50%;
     height: 50%;
@@ -411,7 +411,7 @@ body{
     margin: 0px;
 }
 
-.personal_game_info{
+.personal_game_info {
     background-color: #1b2838;
     width: 45%;
     height: 25%;
@@ -432,7 +432,7 @@ body{
 }
 
 
-.personal_game_info .information_false{
+.personal_game_info .information_false {
     background-color: #ffffff00;
     width: 100%;
     height: 100%;
@@ -451,7 +451,7 @@ body{
     color: #c7d5e0;
 }
 
-.personal_game_info .information_true{
+.personal_game_info .information_true {
     background-color: #ffffff00;
     width: 100%;
     height: 40%;
@@ -473,7 +473,7 @@ body{
     text-align: left;
 }
 
-.compare_div_left{
+.compare_div_left {
     background-color: #1b2838;
     width: 45%;
     height: 77.5%;
@@ -490,7 +490,7 @@ body{
     margin: 0px;
 }
 
-.compare_div_right{
+.compare_div_right {
     background-color: #1b2838;
     width: 45%;
     height: 77.5%;
@@ -507,7 +507,7 @@ body{
     margin: 0px;
 }
 
-.text_compare{
+.text_compare {
     background-color: #ffffff00;
     width: 90%;
     height: 90%;
@@ -528,7 +528,7 @@ body{
     text-align: left;
 }
 
-.account_main_div{
+.account_main_div {
     background-color: #1b2838;
     width: 95%;
     height: 77.5%;
@@ -544,7 +544,7 @@ body{
     margin: 0px;
 }
 
-.account_title{
+.account_title {
     background-color: #1b2838;
     width: 35%;
     height: 15%;
@@ -566,7 +566,7 @@ body{
     text-align: left;
 }
 
-.players_title{
+.players_title {
     background-color: #1b2838;
     width: 90%;
     height: 15%;
@@ -587,7 +587,7 @@ body{
     color: #c7d5e0;
 }
 
-.friends_info{
+.friends_info {
     background-color: #2a475e;
     width: 100%;
     height: 20%;
@@ -604,7 +604,7 @@ body{
     margin-top: 5%;
 }
 
-.friends_info img{
+.friends_info img {
     background-color: #ffffff00;
     height: 80%;
     aspect-ratio: 1 / 1;
@@ -620,7 +620,7 @@ body{
     margin: 0px;
 }
 
-.friends_info .button{
+.friends_info .button {
     background-color: #ffffff00;
     height: 80%;
     width: 70%;
@@ -641,7 +641,7 @@ body{
     text-align: left;
 }
 
-.player_display_right{
+.player_display_right {
     background-color: #1b2838;
     width: 45%;
     height: 95%;
@@ -657,7 +657,7 @@ body{
     margin: 0px;
 }
 
-.player_display_left{
+.player_display_left {
     background-color: #1b2838;
     width: 45%;
     height: 77.5%;
@@ -673,7 +673,7 @@ body{
     margin: 0px;
 }
 
-.player_display_left_text{
+.player_display_left_text {
     background-color: #ffffff00;
     width: 90%;
     height: 45%;
@@ -694,7 +694,7 @@ body{
     text-align: left;
 }
 
-.player_display_left_games{
+.player_display_left_games {
     background-color: #1b2838;
     width: 100%;
     height: 20%;
@@ -715,7 +715,7 @@ body{
     text-align: left;
 }
 
-.player_display_left_games img{
+.player_display_left_games img {
     width: 25%;
     height: 80%;
     position: absolute;
@@ -730,7 +730,7 @@ body{
     margin: 0px;
 }
 
-.player_display_left_games .button{
+.player_display_left_games .button {
     background-color: #ffffff00;
     height: 80%;
     width: 70%;
@@ -751,7 +751,7 @@ body{
     text-align: left;
 }
 
-.mygames{
+.mygames {
     background-color: #ffffff00;
     height: 90%;
     width: 45%;
@@ -767,7 +767,7 @@ body{
     margin: 0px;
 }
 
-.mygames .button{
+.mygames .button {
     background-color: #ffffff00;
     height: 10%;
     width: 100%;
@@ -787,7 +787,7 @@ body{
     color: #c7d5e0;
 }
 
-.mygames .games{
+.mygames .games {
     background-color: #ffffff00;
     height: 20%;
     width: 100%;
@@ -804,7 +804,7 @@ body{
     margin-top: 5%;
 }
 
-.mygames .games img{
+.mygames .games img {
     width: 25%;
     height: 80%;
     position: absolute;
@@ -819,7 +819,7 @@ body{
     margin: 0px;
 }
 
-.mygames .games .button{
+.mygames .games .button {
     background-color: #ffffff00;
     height: 100%;
     width: 65%;
@@ -840,7 +840,7 @@ body{
     text-align: left;
 }
 
-.color_button{
+.color_button {
     background-color: #1b2838;
     height: 15%;
     aspect-ratio: 1 / 1;
@@ -864,7 +864,7 @@ body{
     background-color: #2a475e;
 }
 
-.form{
+.form {
     background-color: #2a475e;
     height: 90%;
     width: 45%;
@@ -881,7 +881,7 @@ body{
 }
 
 .textarea {
-    resize:none;
+    resize: none;
     background-color: #ffffff00;
     height: 75%;
     width: 100%;
@@ -901,7 +901,7 @@ body{
     text-align: center;
 }
 
-.textarea::placeholder{
+.textarea::placeholder {
     color: #1b2838;
 }
 
@@ -928,7 +928,7 @@ body{
 
 .submit {
     background-color: #375d7b;
-    position:absolute;
+    position: absolute;
     height: 10%;
     width: 50%;
     top: 85%;
@@ -938,6 +938,150 @@ body{
     overflow: hidden;
     border: none;
     outline: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+    text-align: center;
+}
+
+.double_search {
+    background-color: #1b2838;
+    height: 15%;
+    width: 45%;
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    border-radius: 2vw;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+    text-align: center;
+}
+
+.double_search_input_left {
+    background-color: #171a21;
+    height: 70%;
+    width: 37.5%;
+    position: absolute;
+    top: 15%;
+    left: 2.5%;
+    border-radius: 1vw;
+    z-index: 2;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+    text-align: center;
+}
+
+.double_search_input_right {
+    background-color: #171a21;
+    height: 70%;
+    width: 37.5%;
+    position: absolute;
+    top: 15%;
+    left: 42.5%;
+    border-radius: 1vw;
+    z-index: 2;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 2vw;
+    color: #c7d5e0;
+    text-align: center;
+}
+
+.logo_box {
+    background-color: #ffffff00;
+    width: 45%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 52.5%;
+    border-radius: none;
+    z-index: 1;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.logo_box img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.hover_search {
+    background-color: #ffffff00;
+    height: 0%;
+    width: 45%;
+    position: absolute;
+    top: 17.5%;
+    left: 2.5%;
+    border-radius: 2vw;
+    z-index: 2;
+    overflow: auto;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+}
+
+.hover_search_button {
+    background-color: #2a475e;
+    height: 10%;
+    width: 100%;
+    position: relative;
+    float: left;
+    border-radius: none;
+    z-index: 2;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
+    margin: 0px;
+    font-family: "Sofia Sans";
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #c7d5e0;
+    text-align: center;
+}
+
+.double_search_input_right_right {
+    background-color: #171a21;
+    height: 70%;
+    width: 15%;
+    position: absolute;
+    top: 15%;
+    right: 2.5%;
+    border-radius: 1vw;
+    z-index: 2;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    padding: none;
     margin: 0px;
     font-family: "Sofia Sans";
     font-weight: 500;

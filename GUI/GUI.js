@@ -132,6 +132,7 @@ function games_get_games(start_num) {
 //to start all functions for _____ screen
 function Home() {
     home_get_games(-5);
+    console.log(window.location)
 }
 
 function Games(game) {
@@ -274,7 +275,7 @@ function compare_get(id1, id2) {
         var to_get = ["achievements", "average_playtime", "categories", "developers", "english", "genre", "median_playtime", "negative_ratings", "owners", "platforms", "positive_ratings", "price", "publisher", "release_date", "required_age", "steam_appid"]
         var inhoud = ""
 
-        document.getElementById("compare_title_box_left").innerHTML = "<img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + id1 + "/header.jpg'><button class='title'><strong>Name: </strong>" + response["name"] + "</button>";
+        document.getElementById("compare_title_box_left").innerHTML = "<img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + id1 + "/header.jpg'><button class='title' onclick='change_screen(" + '"Games",' + id1 + ")'><strong>Name: </strong>" + response["name"] + "</button>";
 
         for (let i = 0; i < to_get.length; i++) {
             inhoud = inhoud + "<strong>" + to_get[i] + ": </strong>" + response[to_get[i]] + "<br>";
@@ -284,7 +285,7 @@ function compare_get(id1, id2) {
         inhoud = ""
 
         eel.get_all_game_info(id2)().then((response2) => {
-            document.getElementById("compare_title_box_right").innerHTML = "<img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + id2 + "/header.jpg'><button class='title'><strong>Name: </strong>" + response2["name"] + "</button>";
+            document.getElementById("compare_title_box_right").innerHTML = "<img src='https://cdn.cloudflare.steamstatic.com/steam/apps/" + id2 + "/header.jpg'><button class='title' onclick='change_screen(" + '"Games",' + id2 + ")'><strong>Name: </strong>" + response2["name"] + "</button>";
             for (let i = 0; i < to_get.length; i++) {
                 inhoud = inhoud + "<strong>" + to_get[i] + ": </strong>" + response2[to_get[i]] + "<br>";
             }
@@ -458,4 +459,43 @@ function get_own_games(){
             })
         }
     })
+}
+
+function search(which){
+    var id = "compare_search_" + which;
+    var input = document.getElementById(id).value;
+    document.getElementById('search_fill').style.height = "70%";
+
+    eel.searchgames(input)().then((response) => {
+        console.log(response);
+        var hover = document.getElementById("search_fill");
+        var inhoud = "";
+
+        for (let i = 0; i < response.length; i++){
+            inhoud = inhoud + "<button class='hover_search_button' onclick='select_game(" + which + ',"' + response[i][0] + '",' + response[i][1]  + ")'>" + response[i][0] + "</button>"
+        }
+
+        hover.innerHTML = inhoud;
+    })
+}
+
+var compare_game1 = 0
+var compare_game2 = 0
+
+function select_game(which, name, id){
+    console.log(name)
+    var id2 = "compare_search_" + which;
+    var input = document.getElementById(id2);
+
+    input.value = name;
+    if (which == 1){
+        compare_game1 = id;
+    } else {
+        compare_game2 = id
+    }
+}
+
+function submit_compare(){
+    compare_get(compare_game1,compare_game2)
+    document.getElementById('search_fill').style.height = "0%";
 }
